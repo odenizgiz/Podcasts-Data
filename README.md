@@ -16,7 +16,7 @@ On the [iTunes website for podcasts](https://itunes.apple.com/us/genre/podcasts-
 
 * Genre IDs: A list of genre IDs of the genres that a podcast is categorized in. I also provide what these IDs stand for in a separate file, called genre_IDs.txt.  
 
-* Episode Count: The number of episodes released so far (August 2017) from a particular podcast. Of course, this number is changing, but should still be useful together with the next column "Episode Durations". Here, I limit the dataframe to contain only podcasts that have a minimum number of 20 episodes. 
+* Episode Count: The number of episodes released so far (August 2017) from a particular podcast. Of course, this number is changing, but could still be useful. Here, I limit the dataframe to contain only podcasts that have a minimum number of 20 episodes. 
 
 * Episode Durations: A list of durations of each episode in minutes. 
 
