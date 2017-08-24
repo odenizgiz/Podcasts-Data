@@ -8,7 +8,7 @@ I also added 3 different Jupyter notebooks where you can see how exactly I colle
 
 <br><Br/>
 
-## The Data
+## 01. General Information About the Data
 On the [iTunes website for podcasts](https://itunes.apple.com/us/genre/podcasts-arts/id1301?mt=2) there is the list of all genres and subgenres. For each genre and subgenre, the podcasts are grouped alphabetically from A to Z; but also, there is a list of "popular podcasts". The dataframe saved as df_popular_podcasts.csv includes the information of 10,155 of these popular podcasts. The columns of this dataframe are: 
 
 * Name: The name of the podcast. 
@@ -29,11 +29,16 @@ On the [iTunes website for podcasts](https://itunes.apple.com/us/genre/podcasts-
 
 * Description: The general description of the podcast as written on its iTunes page. 
 
+
 <p><p/> 
 
-Apart from this dataframe, there are also additional data on these podcasts that you can find under the /data folder. The compressed files there includes 10,155 text files, one for each podcast. Each text file contains all the titles and descriptions of all episodes as a bulk, including the general description, of a podcast, if they were available in its RSS feed (details on this later). For the cases when this information wasn't available, the corresponding text file is either left empty or only includes the word "empty". 
+
+Apart from this dataframe, there are also additional data on these podcasts that you can find under the /data folder. There are eleven compressed files in this folder, named such as 01_raw_data.zip, all of which include 10,155 text files, one for each podcast. Each text file contains all the titles and descriptions of all episodes as a bulk, including the general description, of a podcast, if they were available in its RSS feed (details on this later). For the cases when this information wasn't available, the corresponding text file is either left empty or only includes the word "empty". 
+
+The name of the text file corresponds to the location of the podcast in the dataframe, i.e. if a podcast is in the first row in the dataframe, which is indexed as 0; then its text file is named as 0.txt. 
 
 
 <br><Br/>
 
 
+## 02. How the Data is Collected
