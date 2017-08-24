@@ -6,6 +6,7 @@ The file, df_popular_podcasts.csv, is a dataframe which includes podcast name, t
 
 I also added 3 different Jupyter notebooks where you can see how exactly I collected this dataset. In the following, I will explain what is in each notebook, and the details of this dataset.   
 
+<br><Br/>
 
 ## The Data
 On the [iTunes website for podcasts](https://itunes.apple.com/us/genre/podcasts-arts/id1301?mt=2) there is the list of all genres and subgenres. For each genre and subgenre, the podcasts are grouped alphabetically from A to Z; but also, there is a list of "popular podcasts". The dataframe saved as df_popular_podcasts.csv includes the information of 10,155 of these popular podcasts. The columns of this dataframe are: 
@@ -27,4 +28,12 @@ On the [iTunes website for podcasts](https://itunes.apple.com/us/genre/podcasts-
 * Podcast URL: The URL link of the podcast's website. 
 
 * Description: The general description of the podcast as written on its iTunes page. 
+
+<p><p/> 
+
+Apart from this dataframe, there are also additional data on these podcasts that you can find under the /data folder. The compressed files there includes 10,155 text files, one for each podcast. Each text file contains all the titles and descriptions of all episodes as a bulk, including the general description, of a podcast, if they were available in its RSS feed (details on this later). For the cases when this information wasn't available, the corresponding text file is either left empty or only includes the word "empty". 
+
+
+<br><Br/>
+
 
