@@ -154,7 +154,7 @@ This step is especially necessary since neither the description of the podcasts,
            'wrapperType': 'track'}]}
 
 
-    From this result we see that the keys necessary to collect feeed URL, and genre IDs are 'feedUrl' and 'genreIds'. 
+    From this result we see that the keys necessary to collect RSS feed URL, and genre IDs are 'feedUrl' and 'genreIds'. 
     For the artwork, there are three keys corresponding to three different sizes. I chose 'artworkUrl100'. 
     
     
