@@ -93,10 +93,14 @@ The iTunes URLs that are collected in the previous step can be used to collect c
 
 The link to the podcast's website (on the left column), its description and episode durations can all be obtained in a similar fashion. You can find the exact code in the file, [02.1 Build the Dataset from iTunes Website.ipynb](https://github.com/odenizgiz/Podcasts-Data/blob/master/02.1%20Build%20the%20Dataset%20from%20iTunes%20Website.ipynb). 
 
+This step is especially necessary since neither the description of the podcasts, nor the podcast URL link are not provided through the iTunes API. However, in order to collect more information, such as all the podcasts episodes notes in full, the RSS feed of the podcasts should be parsed (on the iTunes website there is only summaries). And the links to the RSS feeds are provided by the iTunes API.      
+
 <br><br/>
 
 
-**Goal 3: extract information from iTunes API. Using the iTunes URLs that are collected in the previous step, I extracted the iTunes IDs of these podcasts.**  
+**Goal 3: extract information from iTunes API.** 
+How to access iTunes API: 
+The iTunes URLs that are collected in the first part have IDs associated with each podcast. These IDs can be used to query the iTunes API for a particular podcast. 
 
 <br><br/>
 
