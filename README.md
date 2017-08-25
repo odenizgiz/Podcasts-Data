@@ -80,14 +80,27 @@ is:
 
 <br><br/>
 
-**Goal 2: extract information from iTunes API. Using the iTunes URLs that are collected in the previous step, I extracted the iTunes IDs of these podcasts.**  
+**Goal 2: to collect information from each podcast's iTunes page by parsing it.**  
+
+The iTunes URLs that are collected in the previous step can be used to collect crucial information about each podcast by crawling into each web page. After a little inspection, the code required to do this is pretty straightforward. For example, the name of a podcast can be extracted as: 
+
+            url = web.URL(webpage)
+            bs = BeautifulSoup(url.download(cached = False)) 
+
+            titles = bs.find('div', id='title')
+            if titles is not None:
+                title = titles.find('h1').getText()
+
+The link to the podcast's website (on the left column), its description and episode durations can all be obtained in a similar fashion. You can find the exact code in the file, [02.1 Build the Dataset from iTunes Website.ipynb](https://github.com/odenizgiz/Podcasts-Data/blob/master/02.1%20Build%20the%20Dataset%20from%20iTunes%20Website.ipynb). 
 
 <br><br/>
 
 
-**Goal 3: to collect the second set of information from each podcast's iTunes page by parsing it.**  
+**Goal 3: extract information from iTunes API. Using the iTunes URLs that are collected in the previous step, I extracted the iTunes IDs of these podcasts.**  
 
-I used again the iTunes URLs that are collected in the 1st step
+<br><br/>
+
+
 
  
 
