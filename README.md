@@ -55,7 +55,7 @@ is:
 
     https://itunes.apple.com/us/genre/podcasts-arts/id1301?mt=2 
 
-    whereas the link to the genre 'Business' is: 
+   whereas the link to the genre 'Business' is: 
  
     https://itunes.apple.com/us/genre/podcasts-business/id1321?mt=2
 
@@ -64,7 +64,7 @@ is:
 
 * Step 3: In order to collect individual podcast links, I repeated steps 1 & 2 now with all these links at hand, but this time with the pattern "https://itunes.apple.com/us/podcast/". The reason being is that all podcast links start with this pattern followed by the name of the podcast and its iTunes ID. i.e. the iTunes link of the podcast "The Tim Ferriss Show" is: https://itunes.apple.com/us/podcast/the-tim-ferriss-show/id863897795?mt=2 
 
-  After removing the links that may have repeated, I saved the remaining links using Pickle, which is named as 'popular_podcasts_links' that you can find in this directory. 
+     After removing the links that may have repeated, I saved the remaining links using Pickle, which is named as       'popular_podcasts_links' that you can find in this directory. 
   
  
 
