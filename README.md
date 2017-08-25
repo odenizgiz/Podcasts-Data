@@ -84,7 +84,7 @@ is:
 
 The iTunes URLs that are collected in the previous step can be used to collect crucial information about each podcast by crawling into each web page. After a little inspection, the code required to do this is pretty straightforward. For example, the name of a podcast can be extracted as: 
 
-            url = web.URL(webpage)
+            url = web.URL(webpage)
             bs = BeautifulSoup(url.download(cached = False)) 
 
             titles = bs.find('div', id='title')
@@ -99,8 +99,62 @@ This step is especially necessary since neither the description of the podcasts,
 
 
 **Goal 3: extract information from iTunes API.** 
-How to access iTunes API: 
-The iTunes URLs that are collected in the first part have IDs associated with each podcast. These IDs can be used to query the iTunes API for a particular podcast. 
+
+* Step 1: How to access iTunes API is explained [here](https://affiliate.itunes.apple.com/resources/documentation/itunes-store-web-service-search-api/). I decided to look up for the podcasts by their iTunes ID instead of searching for the podcast name since the former is unique. The iTunes URLs that are collected in the first part contain IDs associated with each podcast, i.e. for 'The Tim Ferriss Show', https://itunes.apple.com/us/podcast/the-tim-ferriss-show/id863897795?mt=2, the ID is _863897795_. 
+
+     Using again regular expressions, we can extract the IDs: 
+
+           podcast_id = re.findall('[0-9]+', re.findall('id[0-9]+', iTunes_URL)[0])[0]
+
+
+
+* Step 2: Now these IDs can be used to query the iTunes API for a particular podcast. Leaving ID as the parameter, we can look up a particular podcast as: 
+
+           url = 'https://itunes.apple.com/lookup?id=' + ID
+           response = requests.get(url) 
+           data = response.json()
+
+    The result returned is in JSON format, and includes a dictionary with keys 'resultCount' and 'results'. The value for
+    'results' key is a list of dictionaries for each search result.
+
+        {'resultCount': 1,
+         'results': [{'artistId': 867667252,
+           'artistName': 'Tim Ferriss: Bestselling Author, Human Guinea Pig',
+           'artistViewUrl': 'https://itunes.apple.com/us/artist/tim-ferriss/id867667252?mt=2&uo=4',
+           'artworkUrl100': 'http://is5.mzstatic.com/image/thumb/Music127/v4/00/aa/e9/00aae9d6-1484-0d65-c70b-11132773bcae/source/100x100bb.jpg',
+           'artworkUrl30': 'http://is5.mzstatic.com/image/thumb/Music127/v4/00/aa/e9/00aae9d6-1484-0d65-c70b-11132773bcae/source/30x30bb.jpg',
+           'artworkUrl60': 'http://is5.mzstatic.com/image/thumb/Music127/v4/00/aa/e9/00aae9d6-1484-0d65-c70b-11132773bcae/source/60x60bb.jpg',
+           'artworkUrl600': 'http://is5.mzstatic.com/image/thumb/Music127/v4/00/aa/e9/00aae9d6-1484-0d65-c70b-11132773bcae/source/600x600bb.jpg',
+           'collectionCensoredName': 'The Tim Ferriss Show',
+           'collectionExplicitness': 'cleaned',
+           'collectionHdPrice': 0,
+           'collectionId': 863897795,
+           'collectionName': 'The Tim Ferriss Show',
+           'collectionPrice': 0.0,
+           'collectionViewUrl': 'https://itunes.apple.com/us/podcast/the-tim-ferriss-show/id863897795?mt=2&uo=4',
+           'contentAdvisoryRating': 'Clean',
+           'country': 'USA',
+           'currency': 'USD',
+           'feedUrl': 'http://timferriss.libsyn.com/rss',
+           'genreIds': ['1412', '26', '1321', '1304', '1307'],
+           'genres': ['Investing', 'Podcasts', 'Business', 'Education', 'Health'],
+           'kind': 'podcast',
+           'primaryGenreName': 'Investing',
+           'releaseDate': '2017-08-24T12:07:00Z',
+           'trackCensoredName': 'The Tim Ferriss Show',
+           'trackCount': 262,
+           'trackExplicitness': 'cleaned',
+           'trackHdPrice': 0,
+           'trackHdRentalPrice': 0,
+           'trackId': 863897795,
+           'trackName': 'The Tim Ferriss Show',
+           'trackPrice': 0.0,
+           'trackRentalPrice': 0,
+           'trackViewUrl': 'https://itunes.apple.com/us/podcast/the-tim-ferriss-show/id863897795?mt=2&uo=4',
+           'wrapperType': 'track'}]}
+
+
+
 
 <br><br/>
 
