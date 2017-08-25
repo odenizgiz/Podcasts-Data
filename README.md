@@ -48,7 +48,13 @@ Here I describe step by step how I proceeded:
 
 **Goal 1: extract the iTunes URLs of all the podcasts under 'Popular Podcasts'.**  
 
-* Step 1: First thing I did towards this was to extract all the links [here](https://itunes.apple.com/us/genre/podcasts/id26?mt=2) on the iTunes website. 
+* Step 1: First thing I did towards this was to extract all the links [here](https://itunes.apple.com/us/genre/podcasts/id26?mt=2) on the iTunes website using BeautifulSoup.
+
+        url = web.URL(webpage)
+        bs = BeautifulSoup(url.download(cached = False)) 
+        links_page = []
+        for link in bs.findAll('a', href=True):
+            links_page.append(link['href'])
 
 * Step 2: But what we want to do is to get all the links to the particular genres and subgenres because that is where the "Popular Podcasts" are listed. These genre links follow a particular pattern: for example, the link to the genre 'Arts'
 is:
@@ -59,7 +65,11 @@ is:
  
     https://itunes.apple.com/us/genre/podcasts-business/id1321?mt=2
 
-   Therefore, I used regular expressions to extract from all the links the ones that match the pattern:    'https://itunes.apple.com/us/genre/podcasts-' . 
+   Therefore, I used regular expressions to extract from all the links the ones that match the pattern:    'https://itunes.apple.com/us/genre/podcasts-', which you can easily do with two lines of code:  
+
+
+        if re.search(pattern, link):
+             pattern_links.append(link)
 
 
 * Step 3: In order to collect individual podcast links, I repeated steps 1 & 2 now with all these links at hand, but this time with the pattern "https://itunes.apple.com/us/podcast/". The reason being is that all podcast links start with this pattern followed by the name of the podcast and its iTunes ID. i.e. the iTunes link of the podcast "The Tim Ferriss Show" is: https://itunes.apple.com/us/podcast/the-tim-ferriss-show/id863897795?mt=2 
