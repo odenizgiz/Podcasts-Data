@@ -154,7 +154,12 @@ This step is especially necessary since neither the description of the podcasts,
            'wrapperType': 'track'}]}
 
 
-
+    From this result we see that the keys necessary to collect feeed URL, and genre IDs are 'feedUrl' and 'genreIds'. 
+    For the artwork, there are three keys corresponding to three different sizes. I chose 'artworkUrl100'. 
+    
+    
+    For more details on the code, see
+    [02.1 Build the Dataset from iTunes Website.ipynb](https://github.com/odenizgiz/Podcasts-Data/blob/master/02.1%20Build%20the%20Dataset%20from%20iTunes%20Website.ipynb)
 
 <br><br/>
 
