@@ -42,10 +42,45 @@ The name of the text file corresponds to the location of the podcast in the data
 
 
 ## 02. How the Data is Collected for the Dataframe 
-I extracted the data for the columns, 'Name', 'Episode Count', 'Episode Durations', 'iTunes URL', 'Podcast URL', and 'Description', by parsing the iTunes page of the particular podcast. While for the other columns, 'Artwork', 'Genre IDs' and 'Feed URL', I obtained the data by querying the iTunes API. The code for this can be found under the file: [02.1 Build the Dataset from iTunes Website.ipynb](https://github.com/odenizgiz/Podcasts-Data/blob/master/02.1%20Build%20the%20Dataset%20from%20iTunes%20Website.ipynb).
+I extracted the data for the columns, 'Name', 'Episode Count', 'Episode Durations', 'iTunes URL', 'Podcast URL', and 'Description', by parsing the iTunes page of the particular podcast. While for the other columns, 'Artwork', 'Genre IDs' and 'Feed URL', I obtained the data by querying the iTunes API. The main code for this can be found under the file: [02.1 Build the Dataset from iTunes Website.ipynb](https://github.com/odenizgiz/Podcasts-Data/blob/master/02.1%20Build%20the%20Dataset%20from%20iTunes%20Website.ipynb).
+
+Here I describe step by step how I proceeded:
+
+**Goal 1: extract the iTunes URLs of all the podcasts under 'Popular Podcasts'.**  
+
+* Step 1: First thing I did towards this was to extract all the links [here](https://itunes.apple.com/us/genre/podcasts/id26?mt=2) on the iTunes website. 
+
+* Step 2: But what we want to do is to get all the links to the particular genres and subgenres because that is where the "Popular Podcasts" are listed. These genre links follow a particular pattern: for example, the link to the genre 'Arts'
+is:
+
+    https://itunes.apple.com/us/genre/podcasts-arts/id1301?mt=2 
+
+    whereas the link to the genre 'Business' is: 
+ 
+    https://itunes.apple.com/us/genre/podcasts-business/id1321?mt=2
+
+   Therefore, I used regular expressions to extract from all the links the ones that match the pattern:    'https://itunes.apple.com/us/genre/podcasts-' . 
 
 
+* Step 3: In order to collect individual podcast links, I repeated steps 1 & 2 now with all these links at hand, but this time with the pattern "https://itunes.apple.com/us/podcast/". The reason being is that all podcast links start with this pattern followed by the name of the podcast and its iTunes ID. i.e. the iTunes link of the podcast "The Tim Ferriss Show" is: https://itunes.apple.com/us/podcast/the-tim-ferriss-show/id863897795?mt=2 
+
+  After removing the links that may have repeated, I saved the remaining links using Pickle, which is named as 'popular_podcasts_links' that you can find in this directory. 
+  
+ 
+
+<br><br/>
+
+**Goal 2: extract information from iTunes API. Using the iTunes URLs that are collected in the previous step, I extracted the iTunes IDs of these podcasts.**  
+
+<br><br/>
 
 
+**Goal 3: to collect the second set of information from each podcast's iTunes page by parsing it.**  
+
+I used again the iTunes URLs that are collected in the 1st step
+
+ 
+
+<br><br/>
 
 ## 03. How the Data is Collected as the Text Files
