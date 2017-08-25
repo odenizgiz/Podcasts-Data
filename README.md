@@ -1,7 +1,7 @@
 # Podcasts Data
 Here you can find a dataset of approximately 10,000 podcasts that I collected from iTunes. 
 
-The file, df_popular_podcasts.csv, is a dataframe which includes podcast name, the artwork, its genres, the number of the episodes, the duration of the episodes, three different associated URLs and the general description of the podcast. The  descriptions of all episodes of each podcast is in a text file, which is named after the particular podcast's position in the dataframe and can be found in the zipped files inside the /data/ folder. If you download and decompress 11 files here, you will get ~10,000 text files.
+The file, df_popular_podcasts.csv, is a Pandas dataframe which includes podcast name, the artwork, its genres, the number of the episodes, the duration of the episodes, three different associated URLs and the general description of the podcast. The  descriptions of all episodes of each podcast is in a text file, which is named after the particular podcast's position in the dataframe and can be found in the zipped files inside the /data/ folder. If you download and decompress 11 files here, you will get ~10,000 text files.
 
 
 I also added 3 different Jupyter notebooks where you can see how exactly I collected this dataset. In the following, I will explain what is in each notebook, and the details of this dataset.   
@@ -41,4 +41,13 @@ The name of the text file corresponds to the location of the podcast in the data
 <br><Br/>
 
 
-## 02. How the Data is Collected
+## 02. How the Data is Collected for the Dataframe 
+The data in the dataframe is collected using both parsing the iTunes website and querying the iTunes API. 
+
+I extracted the data for the columns, 'Name', 'Episode Count', 'Episode Durations', 'iTunes URL', 'Podcast URL', and 'Description', by parsing the iTunes page of the particular podcast. While for the other columns, 'Artwork', 'Genre IDs' and 'Feed URL', I obtained the data by querying the iTunes API. The code for this can be found under the file: [02.1 Build the Dataset from iTunes Website.ipynb](https://github.com/odenizgiz/Podcasts-Data/blob/master/02.1%20Build%20the%20Dataset%20from%20iTunes%20Website.ipynb).
+
+
+
+
+
+## 03. How the Data is Collected as the Text Files
