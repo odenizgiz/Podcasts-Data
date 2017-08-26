@@ -167,7 +167,7 @@ This step is especially necessary since neither the description of the podcasts,
 
  
 
-<br><br/>
+
 
 ## 03. How the Data is Collected as the Text Files
 
@@ -196,6 +196,7 @@ However, some of the text will still have html tags inside after I extracted the
                     ... 
                     
 
+<br><br/>
 
 ## 04. Building the Dataframe through iTunes API directly
 
