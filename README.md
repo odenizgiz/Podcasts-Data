@@ -170,3 +170,40 @@ This step is especially necessary since neither the description of the podcasts,
 <br><br/>
 
 ## 03. How the Data is Collected as the Text Files
+
+The descriptions of each episode of a podcast cannot fully be scraped from the iTunes website, but they are available - most of the time - on the RSS feeds of the podcasts. After collecting all the feed URLs from the iTunes API, I put them in the dataframe, as explained in the previous section. The code where each feed is crawled can be found in the notebook [02.2 Extract Raw Data.ipynb](https://github.com/odenizgiz/Podcasts-Data/blob/master/02.2%20Extract%20Raw%20Data.ipynb).
+
+The important thing to note is that RSS feeds are in xml format, so you have to specify while scraping via BeautifulSoup:
+
+        url = web.URL(webpage)
+        bs = BeautifulSoup(url.download(cached = False), features='xml') 
+
+However, some of the text will still have html tags inside after I extracted them via ```getText()```, therefore I passed these again through the function ```BeautifulSoup()```: 
+                
+        titles = bs.findAll('title')
+        descriptions = bs.findAll('description')
+
+        if (titles is not None) and (titles != []): 
+            for title in titles:
+                title = title.getText()
+                if "<" in title:  
+                    bs2 = BeautifulSoup(title)
+                    title = bs2.getText() 
+                    if title not in podcast_titles:
+                        with open(str(i) + '.txt','a') as t:
+                            t.write('\n' + title)      
+                            t.close()
+                    ... 
+                    
+
+
+## 04. Building the Dataframe through iTunes API directly
+
+
+
+
+
+
+
+
+
