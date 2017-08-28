@@ -245,7 +245,7 @@ At the beginning when I decided to collect the podcast data, I turned immediatel
 
 
    * Result:
-    By using this procedure, I collected about ~7,000 podcasts. It is important to note that for a particular search term, the
+    By using this procedure, I collected about ~5,000 podcasts. It is important to note that for a particular search term, the
     API returned exactly the same result of 200 podcasts (even though there might be more podcasts associated with the term).
     Otherwise. one could have also sampled 200 podcasts many times for one term. You can find the code in full in the notebook    
     [01. Build the Dataset from Genres.ipynb](https://github.com/odenizgiz/Podcasts-Data/blob/master/01.%20Build%20the%20Dataset%20from%20Genres.ipynb)
@@ -253,6 +253,8 @@ At the beginning when I decided to collect the podcast data, I turned immediatel
              
 
 
+
+**Strategy 2: Search for content using random search terms:**
 
 
 
