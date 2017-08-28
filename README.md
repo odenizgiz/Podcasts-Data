@@ -200,8 +200,59 @@ However, some of the text will still have html tags inside after I extracted the
 
 ## 04. Building the Dataframe through iTunes API directly
 
+At the beginning when I decided to collect the podcast data, I turned immediately to the iTunes API. I realized that there wasn't a direct way to collect a large dataset from the API, since you can only make a search with specific terms or look up podcasts if you already know enough information about them ([see here](https://affiliate.itunes.apple.com/resources/documentation/itunes-store-web-service-search-api/)). Not realizing that there was an explicit list of podcasts already on the iTunes website (eventually this is how I collected the names/urls of the "popular podcasts" as explained in the previous sections), I thought I could collect the data from API using the following strategies: 
 
-
+* Search for content using genres as search terms: 
+  
+  *** Step 1 ***: 
+  You can make a query to the API by searching for specific terms. These terms can be anything, but in order to get a
+  homogeneous result, I put several possible genre names as the search term: 
+  
+        def build_genres_data(self, genre):
+        
+                url = "https://itunes.apple.com/search?term=" + genre + "&limit=200&country=US&lan=en_us&entity=podcast"
+                response = requests.get(url) 
+                data = response.json()
+                ... 
+                
+                
+  In the ```url``` above, you can see that I limited my search to US, picked English as the language; and more importantly 
+  set the ```entity``` as podcast so that I only get podcasts in the result. iTunes API has the limit of maximum 200 on the 
+  search results, and you have to specify it, otherwise it only gives a small number. 
+  
+  
+  *** Step 2: *** 
+  Again assuming that we do not know about the iTunes website which lists all the genres, how do we know which genres exist       
+  from the API? It is important here to note that every podcast result comes with a key "genres", which is a list of genres
+  that this podcast is categorized in (See Section 2, Goal 3), for example: 
+        
+        {'resultCount': 1,
+        'results': [{'artistId': 867667252,
+        'artistName': 'Tim Ferriss: Bestselling Author, Human Guinea Pig',
+        'genres': ['Investing', 'Podcasts', 'Business', 'Education', 'Health']
+         ...
+          
+  That is why, I first initialized my code with the search term "podcasts". Consider the function in Step 1 only with a 
+  different ```url```:
+  
+        url = "https://itunes.apple.com/search?term=podcasts&limit=200&country=US&lan=en_us&entity=podcast"
+       
+  The API returned 200 podcast results which I used to feed another function that would extract the genres associated with all 
+  of them. This list of genres would be the first seed to use in Step 1 to collect podcasts. But what if there are more
+  genres? As I collected more podcasts, the code can check each of their genres, and if it finds one that is not already in            
+  the list of genres, it would add it to it; and use it later to search for more podcasts. In total I found 68         
+  genres/subgenres, which is just 7 more than the number of genres I got from the initialization. 
+  
+  
+  
+  *** Result:***  
+  By using this procedure, I collected about ~7,000 podcasts. It is important to note that for a particular search term, the
+  API returned exactly the same result of 200 podcasts (even though there might be more podcasts associated with the term).
+  Otherwise. one could have also sampled 200 podcasts many times for one term. You can find the code in full in the notebook 
+  [01. Build the Dataset from Genres.ipynb](https://github.com/odenizgiz/Podcasts-Data/blob/master/01.%20Build%20the%20Dataset%20from%20Genres.ipynb)
+  
+  
+             
 
 
 
