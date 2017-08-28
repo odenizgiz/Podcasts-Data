@@ -202,9 +202,9 @@ However, some of the text will still have html tags inside after I extracted the
 
 At the beginning when I decided to collect the podcast data, I turned immediately to the iTunes API. I realized that there wasn't a direct way to collect a large dataset from the API, since you can only make a search with specific terms or look up podcasts if you already know enough information about them ([see here](https://affiliate.itunes.apple.com/resources/documentation/itunes-store-web-service-search-api/)). Not realizing that there was an explicit list of podcasts already on the iTunes website (eventually this is how I collected the names/urls of the "popular podcasts" as explained in the previous sections), I thought I could collect the data from API using the following strategies: 
 
-* Search for content using genres as search terms: 
+** Goal: Search for content using genres as search terms: ** 
   
-  *** Step 1 ***: 
+  * Step 1: 
   You can make a query to the API by searching for specific terms. These terms can be anything, but in order to get a
   homogeneous result, I put several possible genre names as the search term: 
   
@@ -221,15 +221,15 @@ At the beginning when I decided to collect the podcast data, I turned immediatel
   search results, and you have to specify it, otherwise it only gives a small number. 
   
   
-  *** Step 2: *** 
+  * Step 2:
   Again assuming that we do not know about the iTunes website which lists all the genres, how do we know which genres exist       
   from the API? It is important here to note that every podcast result comes with a key "genres", which is a list of genres
   that this podcast is categorized in (See Section 2, Goal 3), for example: 
         
         {'resultCount': 1,
-        'results': [{'artistId': 867667252,
-        'artistName': 'Tim Ferriss: Bestselling Author, Human Guinea Pig',
-        'genres': ['Investing', 'Podcasts', 'Business', 'Education', 'Health']
+         'results': [{'artistId': 867667252,
+                      'artistName': 'Tim Ferriss: Bestselling Author, Human Guinea Pig',
+                      'genres': ['Investing', 'Podcasts', 'Business', 'Education', 'Health']
          ...
           
   That is why, I first initialized my code with the search term "podcasts". Consider the function in Step 1 only with a 
@@ -245,7 +245,7 @@ At the beginning when I decided to collect the podcast data, I turned immediatel
   
   
   
-  *** Result:***  
+  ** Result: ** 
   By using this procedure, I collected about ~7,000 podcasts. It is important to note that for a particular search term, the
   API returned exactly the same result of 200 podcasts (even though there might be more podcasts associated with the term).
   Otherwise. one could have also sampled 200 podcasts many times for one term. You can find the code in full in the notebook 
