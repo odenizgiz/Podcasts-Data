@@ -256,6 +256,10 @@ At the beginning when I decided to collect the podcast data, I turned immediatel
 
 **Strategy 2: Search for content using random search terms:**
 
+Another idea was to use random set of 1000 words from one of the corpora available in the [NLTK website](http://www.nltk.org/book/ch02.html) for search. After trying a sample of 30 words, the number of results turned back from the API varied a lot from word to word. Most of the time, it was actually zero. That is why I decided not to use random words to generate podcasts. However, a function still exists for building data based on this in the notebook [01. Build the Dataset from Genres.ipynb](https://github.com/odenizgiz/Podcasts-Data/blob/master/01.%20Build%20the%20Dataset%20from%20Genres.ipynb).  
+
+
+
 
 
 
