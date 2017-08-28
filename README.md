@@ -202,7 +202,7 @@ However, some of the text will still have html tags inside after I extracted the
 
 At the beginning when I decided to collect the podcast data, I turned immediately to the iTunes API. I realized that there wasn't a direct way to collect a large dataset from the API, since you can only make a search with specific terms or look up podcasts if you already know enough information about them ([see here](https://affiliate.itunes.apple.com/resources/documentation/itunes-store-web-service-search-api/)). Not realizing that there was an explicit list of podcasts already on the iTunes website (eventually this is how I collected the names/urls of the "popular podcasts" as explained in the previous sections), I thought I could collect the data from API using the following strategies: 
 
-**Goal: Search for content using genres as search terms:** 
+**Strategy 1: Search for content using genres as search terms:** 
   
   * Step 1: 
     You can make a query to the API by searching for specific terms. These terms can be anything, but in order to get a
@@ -244,13 +244,11 @@ At the beginning when I decided to collect the podcast data, I turned immediatel
     genres/subgenres, which is just 7 more than the number of genres I got from the initialization. 
 
 
-  
-  **Result:** 
-  By using this procedure, I collected about ~7,000 podcasts. It is important to note that for a particular search term, the
-  API returned exactly the same result of 200 podcasts (even though there might be more podcasts associated with the term).
-  Otherwise. one could have also sampled 200 podcasts many times for one term. You can find the code in full in the notebook 
-  [01. Build the Dataset from Genres.ipynb](https://github.com/odenizgiz/Podcasts-Data/blob/master/01.%20Build%20the%20Dataset%20from%20Genres.ipynb)
-  
+   * Result:
+    By using this procedure, I collected about ~7,000 podcasts. It is important to note that for a particular search term, the
+    API returned exactly the same result of 200 podcasts (even though there might be more podcasts associated with the term).
+    Otherwise. one could have also sampled 200 podcasts many times for one term. You can find the code in full in the notebook    
+    [01. Build the Dataset from Genres.ipynb](https://github.com/odenizgiz/Podcasts-Data/blob/master/01.%20Build%20the%20Dataset%20from%20Genres.ipynb)
   
              
 
