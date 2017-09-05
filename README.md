@@ -83,10 +83,10 @@ is:
 **Goal 2: to collect information from each podcast's iTunes page by parsing it.**  
 
 The iTunes URLs that are collected in the previous step can be used to collect crucial information about each podcast by crawling into each web page. After a little inspection, the code required to do this is pretty straightforward. For example, the name of a podcast can be extracted as: 
-
-            url = web.URL(webpage)
+          
+            
+            url = web.URL(webpage)
             bs = BeautifulSoup(url.download(cached = False)) 
-
             titles = bs.find('div', id='title')
             if titles is not None:
                 title = titles.find('h1').getText()
