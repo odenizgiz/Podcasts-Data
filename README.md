@@ -1,7 +1,9 @@
 # Podcasts Data
-Here you can find a dataset of approximately 10,000 podcasts that I collected from iTunes. 
+Here you can find a dataset of approximately 10,000 podcasts that I collected from iTunes, plus a corpus of text which includes the full description of all episodes of these podcasts. 
 
-The file, df_popular_podcasts.csv, is a Pandas dataframe which includes podcast name, the artwork, its genres, the number of the episodes, the duration of the episodes, three different associated URLs and the general description of the podcast. The  descriptions of all episodes of each podcast is in a text file, which is named after the particular podcast's position in the dataframe and can be found in the zipped files inside the [/data](https://github.com/odenizgiz/Podcasts-Data/tree/master/data) folder. If you download and decompress 11 files here, you will get ~10,000 text files.
+The file, df_popular_podcasts.csv, is a Pandas dataframe which includes podcast name, the artwork, its genres, the number of the episodes, the duration of the episodes, three different associated URLs and the general description of the podcast. 
+
+The  descriptions of all episodes of each podcast is in a text file, which is named after the particular podcast's position in the dataframe and can be found in the zipped files inside the [/data](https://github.com/odenizgiz/Podcasts-Data/tree/master/data) folder. If you download and decompress 11 files here, you will get ~10,000 text files.
 
 
 I also added 3 different Jupyter notebooks where you can see how exactly I collected this dataset. In the following, I will explain what is in each notebook, and the details of this dataset.   
@@ -33,7 +35,7 @@ On the [iTunes website for podcasts](https://itunes.apple.com/us/genre/podcasts-
 <p><p/> 
 
 
-Apart from this dataframe, there are also additional data on these podcasts that you can find under the [/data](https://github.com/odenizgiz/Podcasts-Data/tree/master/data) folder. There are eleven compressed files in this folder, named such as 01_raw_data.zip, all of which include 10,155 text files, one for each podcast. Each text file contains all the titles and descriptions of all episodes as a bulk, including the general description, of a podcast, if they were available in its RSS feed (details on this later). For the cases when this information wasn't available, the corresponding text file is either left empty or only includes the word "empty". 
+Apart from this dataframe, there is also a corpus of text that you can find under the [/data](https://github.com/odenizgiz/Podcasts-Data/tree/master/data) folder. There are eleven compressed files in this folder, named such as 01_raw_data.zip, all of which include 10,155 text files, one for each podcast. Each text file contains all the titles and descriptions of all episodes as a bulk, including the general description, of a podcast, if they were available in its RSS feed (details on this later). For the cases when this information wasn't available, the corresponding text file is either left empty or only includes the word "empty". 
 
 The name of the text file corresponds to the location of the podcast in the dataframe, i.e. if a podcast is in the first row in the dataframe, which is indexed as 0; then its text file is named as 0.txt. 
 
